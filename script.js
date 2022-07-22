@@ -1,38 +1,39 @@
+
 const Calc = function() {
-    let firstNumber = 7;
-    let secondNumber = 8;
+    let firstNumber = '';
+    let secondNumber = '';
     let result = '';
 
  
     
     this.plus = function() {
-        return console.log(result = firstNumber + secondNumber);
+        return result = firstNumber + secondNumber;
     }
 
     this.minus = function() {
         result = firstNumber - secondNumber;
-        return console.log(result);
+        return result;
      }
 
     this.multiply = function() {
-        console.log(result = firstNumber * secondNumber);
-        return;
+        result = firstNumber * secondNumber;
+        return result;
      }
 
     this.division = function() {
-        console.log(result = firstNumber / secondNumber);
-        return;
+        result = firstNumber / secondNumber;
+        return result;
      }
 
     this.sqrt = function() {
-       console.log(result = Math.sqrt(firstNumber));
-    return;
+       result = Math.sqrt(firstNumber);
+    return result;
      }
 
 
     this.percent = function() {
-        console.log(result = (1 / firstNumber));
-        return;
+         result = (1 / firstNumber);
+        return result;
      }
 
     
@@ -46,21 +47,21 @@ const Calc = function() {
       resultBtn.addEventListener('click', function() {
          switch (true) {
             case input.value.indexOf('+') !== -1:
-                this.plus();
+                plus();
                 break;
             case input.value.indexOf('-') !== -1:
-                this.minus();
+                minus();
                 break;
             case input.value.indexOf('/') !== -1:
                if ((firstNumber == 0) || (secondNumber == 0)) {
                   alert('делить на ноль нельзя');
                   }
                   else {
-                     this.division();
+                     division();
                   }
                 break;
             case input.value.indexOf('*') !== -1:
-                this.multiply();
+                multiply();
                 break;
              
         } 
@@ -133,37 +134,37 @@ const Calc = function() {
       let plus = calcElem.querySelector('.function_plus');
       plus.addEventListener('click', function() {
          document.querySelector('.value').value += '+';
-         this.plus();
+         
       });
   
       let minus = calcElem.querySelector('.function_minus');
       minus.addEventListener('click', function() {
          document.querySelector('.value').value += '-';
-         this.minus();
+         
       });
   
       let multiply = calcElem.querySelector('.function_multiply');
       multiply.addEventListener('click', function() {
          document.querySelector('.value').value += '*';
-         this.multiply();
+         
       });
   
       let sqrt = calcElem.querySelector('.function_sqrt');
       sqrt.addEventListener('click', function() {
          document.querySelector('.value').value += '√';
-         this.sqrt();
+         
       });
   
       let devision = calcElem.querySelector('.function_devision');
       devision.addEventListener('click', function() {
          document.querySelector('.value').value += '/';
-         this.multiply();
+         
       });
   
       let percent = calcElem.querySelector('.function_percent');
       percent.addEventListener('click', function() {
          document.querySelector('.value').value += '1/x';
-         this.percent();
+         
       });
   
   }
