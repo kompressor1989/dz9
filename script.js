@@ -3,6 +3,7 @@ const Calc = function() {
     let firstNumber = '';
     let secondNumber = '';
     let result = '';
+    let operation = '';
 
  
     
@@ -26,14 +27,14 @@ const Calc = function() {
      }
 
     this.sqrt = function() {
-       result = Math.sqrt(firstNumber);
-    return result;
+         result = Math.sqrt(firstNumber);
+         return result;
      }
 
 
     this.percent = function() {
          result = (1 / firstNumber);
-        return result;
+         return result;
      }
 
     
@@ -44,30 +45,44 @@ const Calc = function() {
 
       let input = document.querySelector('.value');
   
-      resultBtn.addEventListener('click', function() {
-         switch (true) {
-            case input.value.indexOf('+') !== -1:
-                plus();
+      resultBtn.addEventListener('click', () => {
+         secondNumber = +input.value;
+         switch (operation) {
+            case '+':
+                this.plus();
                 break;
-            case input.value.indexOf('-') !== -1:
-                minus();
+            case '-':
+                this.minus();
                 break;
-            case input.value.indexOf('/') !== -1:
+            case '/':
                if ((firstNumber == 0) || (secondNumber == 0)) {
-                  alert('делить на ноль нельзя');
+                  alert('Делить на ноль нельзя!!!');
                   }
-                  else {
-                     division();
-                  }
+                  else 
+                  this.division();
+                  break;
+                
+            case '*':
+                this.multiply();
                 break;
-            case input.value.indexOf('*') !== -1:
-                multiply();
-                break;
+
+            case '√':
+               secondNumber = '';
+               this.sqrt();
+               break;
+            case '1/x':
+               this.percent();
+               break;
              
         } 
         
           input.value = result;
   
+      });
+
+      let number = calcElem.querySelector('.number');
+      number.addEventListener('click', function() { 
+         input.value += '-';
       });
   
       let number0 = calcElem.querySelector('.number0');
@@ -83,87 +98,94 @@ const Calc = function() {
   
       let number1 = calcElem.querySelector('.number1');
       number1.addEventListener('click', function() {
-         document.querySelector('.value').value += '1';
+         input.value += '1';
       });
   
       let number2 = calcElem.querySelector('.number2');
       number2.addEventListener('click', function() {
-         document.querySelector('.value').value += '2';
+         input.value += '2';
       });
   
       let number3 = calcElem.querySelector('.number3');
       number3.addEventListener('click', function() {
-         document.querySelector('.value').value += '3';
+         input.value += '3';
       });
   
       let number4 = calcElem.querySelector('.number4');
       number4.addEventListener('click', function() {
-         document.querySelector('.value').value += '4';
+         input.value += '4';
       });
   
       let number5 = calcElem.querySelector('.number5');
       number5.addEventListener('click', function() {
-         document.querySelector('.value').value += '5';
+         input.value += '5';
       });
   
       let number6 = calcElem.querySelector('.number6');
       number6.addEventListener('click', function() {
-         document.querySelector('.value').value += '6';
+         input.value += '6';
       });
   
       let number7 = calcElem.querySelector('.number7');
       number7.addEventListener('click', function() {
-         document.querySelector('.value').value += '7';
+         input.value += '7';
       });
   
       let number8 = calcElem.querySelector('.number8');
       number8.addEventListener('click', function() {
-         document.querySelector('.value').value += '8';
+         input.value += '8';
       });
   
       let number9 = calcElem.querySelector('.number9');
       number9.addEventListener('click', function() {
-         document.querySelector('.value').value += '9';
+         input.value += '9';
       });
   
       let clear = calcElem.querySelector('.function_clear');
       clear.addEventListener('click', function() {
-         document.querySelector('.value').value = '';
+         input.value = '';
       });
   
       let plus = calcElem.querySelector('.function_plus');
       plus.addEventListener('click', function() {
-         document.querySelector('.value').value += '+';
-         
+         operation = '+';
+         firstNumber = +input.value;
+         input.value = '';
       });
   
       let minus = calcElem.querySelector('.function_minus');
       minus.addEventListener('click', function() {
-         document.querySelector('.value').value += '-';
-         
+         operation = '-'
+         firstNumber = +input.value;
+         input.value = '';
       });
   
       let multiply = calcElem.querySelector('.function_multiply');
       multiply.addEventListener('click', function() {
-         document.querySelector('.value').value += '*';
-         
+         operation = '*';
+         firstNumber = +input.value;
+         input.value = '';
       });
   
       let sqrt = calcElem.querySelector('.function_sqrt');
       sqrt.addEventListener('click', function() {
-         document.querySelector('.value').value += '√';
-         
+         operation = '√';
+         firstNumber = +input.value;
+         //input.value = '';
       });
   
       let devision = calcElem.querySelector('.function_devision');
       devision.addEventListener('click', function() {
-         document.querySelector('.value').value += '/';
-         
+         operation = '/';
+         firstNumber = +input.value;
+         input.value = '';
       });
   
       let percent = calcElem.querySelector('.function_percent');
       percent.addEventListener('click', function() {
-         document.querySelector('.value').value += '1/x';
+         operation = '1/x';
+         firstNumber = +input.value;
+         //input.value += '';
          
       });
   
